@@ -27,10 +27,16 @@ function Prompt()
 export default function InputPage(){
     return(
         <>
+<<<<<<< HEAD
             <div className="p-10 bg-500 min-h-screen flex flex-col items-center text-100">
                 <div className="flex flex-col w-2/3 max-w-2xl gap-7 ">
                     <Explanation/>
                     <Prompt/>
+=======
+            <div className="p-10 flex flex-col items-center">
+                <div className="flex w-2/3 gap-5 text-white">
+                    <h2 className="text-2xl">Explanation</h2>
+>>>>>>> 821e1f5c47c591aaf362a06a58554d6792dad844
                     <p className="text-white">Hello world!</p>
                 </div>
             </div>
