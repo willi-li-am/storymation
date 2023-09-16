@@ -7,7 +7,7 @@ import LoadingPage from './components/loadingPage/loadingPage';
 import PageFrame from './components/pageFrame/pageFrame';
 
 function App() {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(2);
 
   return (
     <>
@@ -22,9 +22,7 @@ function App() {
       </PageFrame>
       : <></>}
       {page == 2? 
-      <PageFrame setPage = {setPage}>
         <OutputPage></OutputPage>
-      </PageFrame>
       : <></>}
     </>
   );
