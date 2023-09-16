@@ -1,3 +1,5 @@
+import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 function Explanation() {
     return (
@@ -18,6 +20,7 @@ function Prompt() {
             <button class="bg-100 hover:bg-blue-200 text-500 font-bold py-2 px-4 rounded">
                 <div className="flex flex-row gap-3">
                     <p>Button</p>
+                    <FontAwesomeIcon icon = {faAngleDoubleRight}></FontAwesomeIcon>
                 </div>
             </button>
         </div>
