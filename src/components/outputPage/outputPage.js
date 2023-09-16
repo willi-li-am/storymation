@@ -1,6 +1,7 @@
-export default function OutputPage(){
+export default function OutputPage(props){
 
     return(
-        <></>
+        <>
+        </>
     )
 }
