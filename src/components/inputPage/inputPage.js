@@ -1,4 +1,4 @@
-export default function inputPage(){
+export default function InputPage(){
     return(
         <>
         </>
