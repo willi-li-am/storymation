@@ -117,7 +117,7 @@ export default function VideoAnimate({ setShowBar }) {
             </div>
             <button onClick={() => { setPlaying(!playing) }} className="group w-full h-full flex items-center justify-center text-8xl">
                 <motion.div
-                    className="text-white/0 text-white w-60 h-60 text-center flex items-center justify-center"
+                    className="text-white w-60 h-60 text-center flex items-center justify-center"
                     animate={{ opacity: playing ? 0 : 0.7 }}
                     whileHover={{ scale: 1.1, opacity: playing ? 0.5 : 0.7 }}
                     whileTap={{ scale: 0.9 }}
