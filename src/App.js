@@ -7,7 +7,7 @@ import LoadingPage from './components/loadingPage/loadingPage';
 import PageFrame from './components/pageFrame/pageFrame';
 
 function App() {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(2);
 
   return (
     <>
