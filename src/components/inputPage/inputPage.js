@@ -13,7 +13,7 @@ function Explanation() {
 function Prompt() {
     return (
         <div className="flex flex-col items-end gap-5">
-            <textarea className="w-full h-44 p-4 bg-400 rounded-xl min-h-40 max-h50">
+            <textarea className="w-full h-44 p-4 bg-400 rounded-xl min-h-40 max-h50 outline-none">
             </textarea>
             <button class="bg-100 hover:bg-blue-200 text-500 font-bold py-2 px-4 rounded">
                 <div className="flex flex-row gap-3">
