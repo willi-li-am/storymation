@@ -22,7 +22,6 @@ export default function AnimateFrame({setPage}) {
         if (parentElement) {
           parentElement.addEventListener('mouseenter', handleParentHover);
           parentElement.addEventListener('mouseleave', handleParentMouseLeave);
-          console.log(parentElement)
     
           return () => {
             parentElement.removeEventListener('mouseenter', handleParentHover);
