@@ -108,7 +108,7 @@ export default function VideoAnimate({ setShowBar }) {
             <div className="absolute w-full h-full flex-col">
                 <input
                     type="range"
-                    className="absolute transparent h-[8px] w-full cursor-pointer appearance-none border-transparent bg-200 bottom-[8px]"
+                    className="absolute transparent h-[10px] w-full cursor-pointer appearance-none border-transparent bg-200 bottom-[8px]"
                     id="customRange1"
                     onChange={e => { setTime(scene.Duration * e.target.value / 100)}}
                     value={time / scene.Duration * 100}
