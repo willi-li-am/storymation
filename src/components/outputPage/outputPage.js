@@ -1,3 +1,6 @@
-export default function exportPage(){
-    
+export default function OutputPage(){
+
+    return(
+        <></>
+    )
 }
