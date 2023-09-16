@@ -6,14 +6,14 @@ import { faAngleDoubleLeft, faDownload, faFileExport } from "@fortawesome/free-s
 
 export default function AnimateFrame({setPage}) {
 
-    const [position, setPosition] = useState(false);
+    const [showBar, setShowBar] = useState(false);
     const videoRef = useRef(null)
     const handleParentHover = () => {
-        setPosition(true)
+        setShowBar(true)
       };
     
       const handleParentMouseLeave = () => {
-        setPosition(false)
+        setShowBar(false)
       };
     
       useEffect(() => {
@@ -33,8 +33,8 @@ export default function AnimateFrame({setPage}) {
     return(
         <div className="flex flex-col justify-center items-center space-y-[20px]">
             <div ref={videoRef} className="aspect-video bg-300 w-[75vw] flex justify-center items-end overflow-hidden">
-                <VideoAnimate setPosition={setPosition}></VideoAnimate>
-                <ImageView position = {position}></ImageView>
+                <VideoAnimate setShowBar={setShowBar}></VideoAnimate>
+                <ImageView showBar = {showBar}></ImageView>
             </div>
             <div className="w-[calc(75vw-50px)] h-[10px] flex justify-between">
                 <button onClick={() => {setPage(0)}} className="group bg-100 hover:bg-blue-200 text-500 font-bold rounded w-20 h-9 p-2">
