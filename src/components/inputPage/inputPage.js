@@ -9,7 +9,7 @@ function Explanation() {
         <div className="flex flex-col gap-5">
             <h2 className="text-6xl">Usage</h2>
             <p className="text-lg">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Storymation transforms text stories into vibrant animations. Just input your narrative, and it creates captivating animated tales. It's perfect for writers and educators looking to add visual storytelling to their repertoire. Elevate your storytelling with Storymation's easy-to-use platform today!
             </p>
         </div>
     )
