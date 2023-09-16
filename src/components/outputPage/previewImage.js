@@ -26,6 +26,7 @@ export default function PreviewImage({index, selected, setSelected, value}){
             <MiniPreview>
                 {/*"map over value to get all the images and then put them in preview component"*/}
                 <PreviewComponent img = "https://assets.stickpng.com/images/580b57fcd9996e24bc43c1ed.png" position={{x: "20%", y: "50%"}} size={"10%"}></PreviewComponent>
+                <PreviewComponent img = "https://e7.pngegg.com/pngimages/742/816/png-clipart-coke-coke-drink-thumbnail.png" position={{x: "50%", y: "20%"}} size={"10%"}></PreviewComponent>
             </MiniPreview>
         </div>
     )

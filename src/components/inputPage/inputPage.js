@@ -99,7 +99,6 @@ function IDK({ actions, time })
             // localT = actions[currentAction].time;
         }
         else {
-            console.log(time)
             setX(lerp(actions[currentAction].x, actions[currentAction + 1].x, t));
             setY(lerp(actions[currentAction].y, actions[currentAction + 1].y, t));
         }

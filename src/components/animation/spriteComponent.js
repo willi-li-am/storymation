@@ -1,7 +1,10 @@
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+
 export default function SpriteComponent({actions, img, time})
 {
-    const [x, setX] = useState(0);
-    const [y, setY] = useState(0);
+    const [x, setX] = useState(actions[0].x);
+    const [y, setY] = useState(actions[0].y);
 
     function lerp(a, b, t)
     {
@@ -32,7 +35,6 @@ export default function SpriteComponent({actions, img, time})
             // localT = actions[currentAction].time;
         }
         else {
-            console.log(time)
             setX(lerp(actions[currentAction].x, actions[currentAction + 1].x, t));
             setY(lerp(actions[currentAction].y, actions[currentAction + 1].y, t));
         }
@@ -45,7 +47,8 @@ export default function SpriteComponent({actions, img, time})
         <div className="w-full">
             <motion.div
                 className="w-20 h-20 bg-red-600"
-                animate={{x, y}}
+                animate={{x: x, y: y}}
+                transition={{ease: "linear", duration: 0.01}}
             />
         </div>
     )
