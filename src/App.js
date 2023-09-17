@@ -5,23 +5,16 @@ import InputPage from './components/inputPage/inputPage';
 import OutputPage from './components/outputPage/outputPage';
 import LoadingPage from './components/loadingPage/loadingPage';
 import PageFrame from './components/pageFrame/pageFrame';
+import SocketFrame from './components/pageFrame/websocketFrame';
 
 function App() {
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(0);
+  const [newQuery, setNewQuery] = useState("");
 
   return (
     <>
-      {page == 0? 
-        <PageFrame setPage = {setPage}>
-          <InputPage setPage={setPage}></InputPage>
-        </PageFrame> 
-      : <></>}
-      {page == 1?
-        <LoadingPage></LoadingPage>
-      : <></>}
-      {page == 2? 
-        <OutputPage setPage={setPage}></OutputPage>
-      : <></>}
+      <SocketFrame page={page} setPage={setPage} newQuery={newQuery} setNewQuery={setNewQuery}>
+      </SocketFrame>
     </>
   );
 }
