@@ -32,7 +32,6 @@ export default function SocketFrame({children, newQuery, setNewQuery, setPage, p
         }
 
         openSocket(newQuery)
-        console.log(newQuery)
 
     }, [newQuery])
 
@@ -47,7 +46,7 @@ export default function SocketFrame({children, newQuery, setNewQuery, setPage, p
           <LoadingPage></LoadingPage>
         : <></>}
         {page == 2? 
-          <OutputPage setPage={setPage}></OutputPage>
+          <OutputPage scenes={scenes} setScenes={setScenes} music={music} setMusic={setMusic} setPage={setPage}></OutputPage>
         : <></>}
         </>
     )
