@@ -23,10 +23,12 @@ export default function PreviewImage({index, selected, setSelected, value}){
         className="h-[100px] w-[200px] bg-200 duration-200 hover:cursor-pointer object-cover overflow-hidden" 
         style={{minWidth: hovered || clicked? "150px" : "20px", borderColor: clicked? "red" : "white", borderWidth: clicked? "2px" : "1px"}}>
 
-            <MiniPreview>
-                {/*"map over value to get all the images and then put them in preview component"*/}
-                <PreviewComponent img = "https://assets.stickpng.com/images/580b57fcd9996e24bc43c1ed.png" position={{x: "20%", y: "50%"}} size={"10%"}></PreviewComponent>
-                <PreviewComponent img = "https://e7.pngegg.com/pngimages/742/816/png-clipart-coke-coke-drink-thumbnail.png" position={{x: "50%", y: "20%"}} size={"10%"}></PreviewComponent>
+            <MiniPreview bg={value["Background"]}>
+                {value["Characters"].map((character, index) => {
+                    return(
+                        <PreviewComponent img = {character["Sprite"]} position={{x: (character["Actions"][0]["x"] * 100)+"%", y: (character["Actions"][0]["y"]* 100)+"%"}} size={character["Size"]}></PreviewComponent>
+                    )
+                })}
             </MiniPreview>
         </div>
     )

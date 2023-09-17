@@ -19,11 +19,11 @@ export default function VideoAnimate({ setShowBar, scenes, currentScene, setCurr
     // Update time
     useEffect(() => {
         const interval = setInterval(() => {
-            if (playing && time <= scene.length) {
+            if (playing && time <= scene["length"]) {
                 setTime(time + 1 / refreshRate);
             }
 
-            if (time > scene.length)
+            if (time > scene["length"])
             {
                 console.log("Implement scene switch")
                 setCurrentScene(currentScene + 1);
@@ -60,8 +60,8 @@ export default function VideoAnimate({ setShowBar, scenes, currentScene, setCurr
                     className="absolute transparent h-[10px] w-full cursor-pointer appearance-none border-transparent bg-200 bottom-[8px]"
                     id="customRange1"
                     step="0.1"
-                    onChange={e => { setTime(scene.length * e.target.value / 100) }}
-                    value={time / scene.length * 100}
+                    onChange={e => { setTime(scene["length"] * e.target.value / 100) }}
+                    value={time / scene["length"] * 100}
                 />
                 {scene.Characters.map(character =>
                     <SpriteComponent
