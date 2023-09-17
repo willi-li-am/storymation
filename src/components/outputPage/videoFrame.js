@@ -9,7 +9,7 @@ export default function AnimateFrame({setPage, currentScene, setCurrentScene, sc
     setPage(0);
     setScenes([])
     setMusic("")
-    setNumberScene(0)
+    setNumberScene(-1)
   }
     let scene = scenes[currentScene];
 

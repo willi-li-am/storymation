@@ -8,7 +8,7 @@ let first = false;
 
 export default function SocketFrame({children, newQuery, setNewQuery, setPage, page}){
     const [scenes, setScenes] = useState([])
-    const [numberScene, setNumberScene] = useState(0)
+    const [numberScene, setNumberScene] = useState(-1)
     const [music, setMusic] = useState(false)
     const inputRef = useRef(null)
 
@@ -35,7 +35,7 @@ export default function SocketFrame({children, newQuery, setNewQuery, setPage, p
                 let newAcc = {
                     x: parseFloat(pos[0]) / 100,
                     y: parseFloat(pos[1]) / 100,
-                    time: parseFloat(action["time"]),
+                    time: parseFloat(action["Time"]),
                 }
                 newCharacter["Actions"].push(newAcc);
             }
@@ -79,7 +79,9 @@ export default function SocketFrame({children, newQuery, setNewQuery, setPage, p
 
                     else if (data["type"] == "story"){
                         const transData = Receive(data)
-                        setScenes([...scenes, transData])
+                        let dataArr = scenes
+                        dataArr.push(transData)
+                        setScenes(dataArr)
                     }
 
                     else if (data["type"] == "youtube"){
@@ -91,7 +93,7 @@ export default function SocketFrame({children, newQuery, setNewQuery, setPage, p
                     }
                 }
                 ws.onclose = () => {
-                    console.log("Websocket closed successfully")
+                    setPage(3)
                 }
             }
         }
@@ -108,9 +110,9 @@ export default function SocketFrame({children, newQuery, setNewQuery, setPage, p
             </PageFrame>
         : <></>}
         {page == 1?
-          <LoadingPage></LoadingPage>
+          <LoadingPage scenes={scenes} numberScenes={numberScene} setPage={setPage}></LoadingPage>
         : <></>}
-        {page == 2? 
+        {page == 3? 
           <OutputPage scenes={scenes} setScenes={setScenes} music={music} setMusic={setMusic} setPage={setPage} numberScene={numberScene} setNumberScene={setNumberScene}></OutputPage>
         : <></>}
         </>
