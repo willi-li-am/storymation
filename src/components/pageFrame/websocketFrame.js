@@ -8,7 +8,7 @@ let first = false;
 
 export default function SocketFrame({children, newQuery, setNewQuery, setPage, page}){
     const [scenes, setScenes] = useState([])
-    const [ready, setReady] = useState(false)
+    const [music, setMusic] = useState(false)
     const inputRef = useRef(null)
 
     useEffect(() => {
@@ -19,7 +19,6 @@ export default function SocketFrame({children, newQuery, setNewQuery, setPage, p
                     console.log("opened")
                     try{
                         ws.send(newQuery)
-                        setReady(!ready)
                     }
                     catch(e){
                         console.log(e)
@@ -27,6 +26,32 @@ export default function SocketFrame({children, newQuery, setNewQuery, setPage, p
                 }
                 ws.onmessage = (message) => {
                     console.log(message["data"])
+                    let data = message["data"]
+                    try{
+                        data = JSON.parse(message["data"])
+                    }
+                    catch{
+                
+                    }
+                    if (data["type"] == "success"){
+                        ws.close()
+                        setNewQuery("")
+                    }
+
+                    else if (data["type"] == "story"){
+                        setScenes([...scenes, data])
+                    }
+
+                    else if (data["type"] == "youtube"){
+                        setMusic(data["value"])
+                    }
+
+                    else{
+                        console.log(data)
+                    }
+                }
+                ws.onclose = () => {
+                    console.log("Websocket closed successfully")
                 }
             }
         }
