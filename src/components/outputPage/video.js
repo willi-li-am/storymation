@@ -4,7 +4,9 @@ import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import SpriteComponent from "../animation/spriteComponent";
 
-export default function VideoAnimate({ setShowBar, scene, currentScene, setCurrentScene }) {
+export default function VideoAnimate({ setShowBar, scenes, currentScene, setCurrentScene }) {
+    let scene = scenes[currentScene]
+
     // Playing
     const [playing, setPlaying] = useState(true)
     const x = playing ? -30 : 0
@@ -25,8 +27,8 @@ export default function VideoAnimate({ setShowBar, scene, currentScene, setCurre
             {
                 console.log("Implement scene switch")
                 setCurrentScene(currentScene + 1);
-                //setPlaying(false);
-                setTime(0)
+                setPlaying(false);
+                setTime(0);
             }
 
         }, 1000 / refreshRate);
@@ -37,16 +39,17 @@ export default function VideoAnimate({ setShowBar, scene, currentScene, setCurre
     const [dimensions, setDimensions] = useState([0, 0])
     const ref = useRef(null)
 
-    useEffect(() =>
-    {
-        setDimensions([ref.current.clientWidth, ref.current.clientHeight]);
-    })
-
     return (
         <div
             className="relative aspect-video bg-300 w-[75vw] flex justify-end items-end overflow-hidden"
         >
             <div className="absolute w-full h-full flex-col" ref={ref}>
+                {
+                    useEffect(() =>
+                    {
+                        setDimensions([ref.current.clientWidth, ref.current.clientHeight]);
+                    },[])
+                }
                 <input
                     type="range"
                     className="absolute transparent h-[10px] w-full cursor-pointer appearance-none border-transparent bg-200 bottom-[8px]"

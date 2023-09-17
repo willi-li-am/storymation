@@ -8,7 +8,7 @@ import PageFrame from './components/pageFrame/pageFrame';
 import SocketFrame from './components/pageFrame/websocketFrame';
 
 function App() {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(2);
   const [newQuery, setNewQuery] = useState("");
 
   return (

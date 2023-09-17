@@ -4,7 +4,8 @@ import VideoAnimate from "./video";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft, faDownload } from "@fortawesome/free-solid-svg-icons";
 
-export default function AnimateFrame({setPage, currentScene, setCurrentScene, scene}) {
+export default function AnimateFrame({setPage, currentScene, setCurrentScene, scenes}) {
+    let scene = scenes[currentScene];
 
     const [showBar, setShowBar] = useState(false);
     const videoRef = useRef(null)
@@ -34,7 +35,7 @@ export default function AnimateFrame({setPage, currentScene, setCurrentScene, sc
     return(
         <div className="flex flex-col justify-center items-center space-y-[20px]">
             <div ref={videoRef} className="aspect-video bg-300 w-[75vw] flex justify-center items-end overflow-hidden">
-                <VideoAnimate setShowBar={setShowBar} currentScene={currentScene} setCurrentScene={setCurrentScene} scene={scene}></VideoAnimate>
+                <VideoAnimate setShowBar={setShowBar} currentScene={currentScene} setCurrentScene={setCurrentScene} scenes={scenes}></VideoAnimate>
                 <ImageView showBar = {showBar}></ImageView>
             </div>
             <div className="w-[calc(75vw-50px)] h-[10px] flex justify-between">

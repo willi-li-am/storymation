@@ -100,14 +100,15 @@ export default function OutputPage(props){
 
     Receive(JSON.stringify({type: "numberScenes", value: 1}));
     Receive(JSON.stringify({type: "scene", value: rawScene}));
+    //rawScene["Characters"][0]["Actions"]["Position"] = "0%, 0%";
+    //rawScene["Characters"][1]["Actions"]["Position"] = "0%, 0%";
     Receive(JSON.stringify({type: "scene", value: rawScene}));
-    scenes[1]["Characters"][0]["Actions"]["Position"] = "100%, 100%";
 
     const [currentScene, setCurrentScene] = useState(0);
 
     return(
         <div className="w-full h-full min-h-screen flex flex-col justify-around items-center bg-500 overflow-hidden">
-            <AnimateFrame setPage={props.setPage} currentScene={currentScene} setCurrentScene={setCurrentScene} scene={scenes[currentScene]}/>
+            <AnimateFrame setPage={props.setPage} currentScene={currentScene} setCurrentScene={setCurrentScene} scenes={scenes}/>
         </div>
     )
 }
