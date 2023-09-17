@@ -1,52 +1,7 @@
+import { useState } from "react";
 import AnimateFrame from "./videoFrame";
 
-const scene =
-{
-    Background: "A cozy, well-lit kitchen with pots and pans hanging overhead, a wooden table in the center, and a refrigerator to the right",
-    length: 6,
-    Characters: [
-        {
-            Type: "Human",
-            Description: "A male robber, dressed in all black with a mask and a sack",
-            Size: "25%",
-            Actions: [
-                {
-                    x: 10,
-                    y: 50,
-                    time: 0
-                },
-                {
-                    x: 400,
-                    y: 100,
-                    time: 2
-                }
-            ]
-        },
-        {
-            Type: "Human",
-            Description: "A mother, dressed in an apron, holding a frying pan",
-            Size: "25%",
-            Actions: [
-                {
-                    x: 80,
-                    y: 50,
-                    time: 0
-                },
-                {
-                    x: 400,
-                    y: 100,
-                    time: 3
-                },
-                {
-                    x: 500,
-                    y: 400,
-                    time: 6
-                }
-            ]
-        }
-    ]
-}
-
+// Test raw-scene (expected format)
 const rawScene = 
 {
     Background: "A cozy, well-lit kitchen with pots and pans hanging overhead, a wooden table in the center, and a refrigerator to the right",
@@ -64,6 +19,10 @@ const rawScene =
                 {
                     Position: "20%, 5%",
                     time: "2"
+                },
+                {
+                    Position: "85%, 50%",
+                    time: "6"
                 }
             ]
         },
@@ -81,7 +40,7 @@ const rawScene =
                     time: "3"
                 },
                 {
-                    Position: "90%, 10%",
+                    Position: "20%, 10%",
                     time: "6"
                 }
             ]
@@ -91,7 +50,6 @@ const rawScene =
 
 let scenes = []
 let sceneCount = 0
-let currentScene = 0
 
 function Receive(json)
 {
@@ -142,12 +100,14 @@ export default function OutputPage(props){
 
     Receive(JSON.stringify({type: "numberScenes", value: 1}));
     Receive(JSON.stringify({type: "scene", value: rawScene}));
+    Receive(JSON.stringify({type: "scene", value: rawScene}));
+    scenes[1]["Characters"][0]["Actions"]["Position"] = "100%, 100%";
 
-    console.log(scenes[0]);
+    const [currentScene, setCurrentScene] = useState(0);
 
     return(
         <div className="w-full h-full min-h-screen flex flex-col justify-around items-center bg-500 overflow-hidden">
-            <AnimateFrame setPage={props.setPage} scene={scene}/>
+            <AnimateFrame setPage={props.setPage} currentScene={currentScene} setCurrentScene={setCurrentScene} scene={scenes[currentScene]}/>
         </div>
     )
 }

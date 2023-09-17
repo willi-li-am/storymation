@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 
 export default function SpriteComponent({actions, img, time, dimensions})
 {
-    const [x, setX] = useState(actions[0].x);
-    const [y, setY] = useState(actions[0].y);
+    const [x, setX] = useState(actions[0].x * dimensions[0]);
+    const [y, setY] = useState(actions[0].y * dimensions[1]);
 
     function lerp(a, b, t)
     {
@@ -35,8 +35,8 @@ export default function SpriteComponent({actions, img, time, dimensions})
             // localT = actions[currentAction].time;
         }
         else {
-            setX(lerp(actions[currentAction].x, actions[currentAction + 1].x, t));
-            setY(lerp(actions[currentAction].y, actions[currentAction + 1].y, t));
+            setX(lerp(actions[currentAction].x, actions[currentAction + 1].x, t) * dimensions[0]);
+            setY(lerp(actions[currentAction].y, actions[currentAction + 1].y, t) * dimensions[1]);
         }
     }
     useEffect(()=> {
