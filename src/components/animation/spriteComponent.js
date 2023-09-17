@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-export default function SpriteComponent({actions, img, time})
+export default function SpriteComponent({actions, img, time, dimensions})
 {
     const [x, setX] = useState(actions[0].x);
     const [y, setY] = useState(actions[0].y);

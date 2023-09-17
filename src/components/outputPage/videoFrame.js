@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import ImageView from "./imageView";
 import VideoAnimate from "./video";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDoubleLeft, faDownload, faFileExport } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDoubleLeft, faDownload } from "@fortawesome/free-solid-svg-icons";
 
-export default function AnimateFrame({setPage}) {
+export default function AnimateFrame({setPage, scene}) {
 
     const [showBar, setShowBar] = useState(false);
     const videoRef = useRef(null)
@@ -30,10 +30,11 @@ export default function AnimateFrame({setPage}) {
         }
       });
 
+
     return(
         <div className="flex flex-col justify-center items-center space-y-[20px]">
             <div ref={videoRef} className="aspect-video bg-300 w-[75vw] flex justify-center items-end overflow-hidden">
-                <VideoAnimate setShowBar={setShowBar}></VideoAnimate>
+                <VideoAnimate setShowBar={setShowBar} scene={scene}></VideoAnimate>
                 <ImageView showBar = {showBar}></ImageView>
             </div>
             <div className="w-[calc(75vw-50px)] h-[10px] flex justify-between">
