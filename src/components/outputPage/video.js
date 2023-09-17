@@ -27,7 +27,12 @@ export default function VideoAnimate({ setShowBar, scenes, currentScene, setCurr
             {
                 console.log("Implement scene switch")
                 setCurrentScene(currentScene + 1);
-                setPlaying(false);
+
+                if (currentScene == scenes.length - 1)
+                {
+                    setPlaying(false);
+                }
+
                 setTime(0);
             }
 
@@ -60,7 +65,7 @@ export default function VideoAnimate({ setShowBar, scenes, currentScene, setCurr
                 />
                 {scene.Characters.map(character =>
                     <SpriteComponent
-                        actions={character.Actions} time={time} className="absolute" ref={ref} dimensions={dimensions}
+                        character={character} time={time} className="absolute" ref={ref} dimensions={dimensions}
                     />
                 )}
             </div>
@@ -75,6 +80,7 @@ export default function VideoAnimate({ setShowBar, scenes, currentScene, setCurr
                     <FontAwesomeIcon icon={playing ? faPause : faPlay}></FontAwesomeIcon>
                 </motion.div>
             </button>
+            <p className="absolute text-6xl font-sg pr-2 font-bold">{currentScene + 1}</p>
         </div>
     )
 }

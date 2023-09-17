@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-export default function SpriteComponent({actions, img, time, dimensions})
+export default function SpriteComponent({character, img, time, dimensions})
 {
+    let actions = character.Actions;
     const [x, setX] = useState(actions[0].x * dimensions[0]);
     const [y, setY] = useState(actions[0].y * dimensions[1]);
 
@@ -44,10 +45,10 @@ export default function SpriteComponent({actions, img, time, dimensions})
     },[time])
 
     return (
-        <div className="w-full">
+        <div className="absolute">
             <motion.div
                 className="w-20 h-20 bg-red-600"
-                animate={{x: x, y: y}}
+                animate={{x: x, y: y, scale: character.Size}}
                 transition={{ease: "linear", duration: 0.01}}
             />
         </div>
