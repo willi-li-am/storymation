@@ -44,13 +44,19 @@ export default function SpriteComponent({character, img, time, dimensions})
         update()
     },[time])
 
+    // console.log(character)
+
     return (
         <div className="absolute">
             <motion.div
-                className="w-20 h-20 bg-red-600"
-                animate={{x: x, y: y, scale: character.Size}}
+                className="w-20 h-20"
+                animate={{x: x, y: y, scale: character.Size * 6 * 2}}
                 transition={{ease: "linear", duration: 0.01}}
-            />
+            >
+                <img className=""
+                src={character.Link}>
+                </img>
+            </motion.div>
         </div>
     )
 }

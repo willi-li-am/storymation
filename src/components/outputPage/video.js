@@ -26,11 +26,14 @@ export default function VideoAnimate({ setShowBar, scenes, currentScene, setCurr
             if (time > scene["length"])
             {
                 console.log("Implement scene switch")
-                setCurrentScene(currentScene + 1);
 
                 if (currentScene == scenes.length - 1)
                 {
                     setPlaying(false);
+                }
+                else
+                {
+                    setCurrentScene(currentScene + 1);
                 }
 
                 setTime(0);
@@ -44,10 +47,15 @@ export default function VideoAnimate({ setShowBar, scenes, currentScene, setCurr
     const [dimensions, setDimensions] = useState([0, 0])
     const ref = useRef(null)
 
+    console.log(scene.Background)
+
     return (
         <div
             className="relative aspect-video bg-300 w-[75vw] flex justify-end items-end overflow-hidden"
         >
+            <div className="absolute w-full h-full">
+                <img className="absolute w-full h-full bg-100" src={scene.Background}/>
+            </div>
             <div className="absolute w-full h-full flex-col" ref={ref}>
                 {
                     useEffect(() =>

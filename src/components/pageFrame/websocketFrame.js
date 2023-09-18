@@ -109,7 +109,7 @@ export default function SocketFrame({children, newQuery, setNewQuery, setPage, p
                 <InputPage newQuery = {newQuery} setPage={setPage} setNewQuery={setNewQuery} inputRef={inputRef}></InputPage>
             </PageFrame>
         : <></>}
-        {page == 1?
+        {page == 2?
           <LoadingPage scenes={scenes} numberScenes={numberScene} setPage={setPage}></LoadingPage>
         : <></>}
         {page == 3? 

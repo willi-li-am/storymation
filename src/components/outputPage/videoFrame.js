@@ -11,7 +11,6 @@ export default function AnimateFrame({setPage, currentScene, setCurrentScene, sc
     setMusic("")
     setNumberScene(-1)
   }
-    let scene = scenes[currentScene];
 
     const [showBar, setShowBar] = useState(false);
     const videoRef = useRef(null)
@@ -39,19 +38,19 @@ export default function AnimateFrame({setPage, currentScene, setCurrentScene, sc
 
 
     return(
-        <div className="flex flex-col justify-center items-center space-y-[20px]">
+        <div className="bg-500 flex flex-col justify-center items-center space-y-[20px]">
             <div ref={videoRef} className="aspect-video bg-300 w-[75vw] flex justify-center items-end overflow-hidden">
                 <VideoAnimate setShowBar={setShowBar} currentScene={currentScene} setCurrentScene={setCurrentScene} scenes={scenes}></VideoAnimate>
-                <ImageView scenes={scenes} showBar = {showBar}></ImageView>
+                <ImageView scenes={scenes} showBar = {showBar} setCurrentScene = {setCurrentScene}></ImageView>
             </div>
-            <div className="w-[calc(75vw-50px)] h-[10px] flex justify-between">
-                <button onClick={handleReset} className="group bg-100 hover:bg-blue-200 text-500 font-bold rounded w-20 h-9 p-2">
+            <div className="w-[calc(75vw)] h-[10px] flex justify-between">
+                <button onClick={handleReset} className="group bg-100 hover:bg-blue-200 text-500 font-bold rounded w-20 h-9 p-2 overflow-clip">
                     <div className="flex flex-row items-center h-full w-200 gap-3 group-hover:-translate-x-20 transition-all pl-1">
                         <p className="mr-9">Return</p>
                         <FontAwesomeIcon icon = {faAngleDoubleLeft}></FontAwesomeIcon>
                     </div>
                 </button>
-                <button className="group bg-100 hover:bg-blue-200 text-500 font-bold rounded w-20 h-9 p-2">
+                <button className="group bg-100 hover:bg-blue-200 text-500 font-bold rounded w-20 h-9 p-2 overflow-clip">
                     <div className="flex flex-row items-center h-full w-200 gap-3 group-hover:-translate-x-20 transition-all pl-1">
                         <p className="pr-9">Export</p>
                         <FontAwesomeIcon icon = {faDownload}></FontAwesomeIcon>
